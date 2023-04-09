@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using CheckInput;
@@ -12,25 +13,31 @@ namespace Bank
     {
         public List<BankAccount> listOfBankAccounts;
         int accountID;
+        
         public AccountOperations()
         {
-            accountID = 0;
+            accountID = 1;
             listOfBankAccounts = new List<BankAccount>();
+            CreateBankAccount();
+                
+        }
+
+        private void CreateBankAccount()
+        {
+            string bankName = "Bank";
+            int bankBallance = 0;
+            BankAccount accountOfBank = new BankAccount(accountID, bankName, bankBallance);
+            listOfBankAccounts.Add(accountOfBank);
         }
 
         public int CreateNewAccount()
         {
-            int randomAccountID = 0;
-            Random accountNumber = new Random();
-            randomAccountID = accountNumber.Next(000000000, 999999999);
-
-            Console.WriteLine("Insert your name:");
+            accountID = ++accountID;
+            Console.WriteLine("Insert name of the owner:");
             string ownerName = Check.NotEmptyString();
             int accountBallance = 0;
-            accountID = accountID + 1;
 
-            BankAccount bankAccount = new BankAccount(accountID, randomAccountID, ownerName, accountBallance);
-            listOfBankAccounts.Add(bankAccount);
+            listOfBankAccounts.Add(new BankAccount(accountID, ownerName, accountBallance));
             Console.ReadKey();
             return accountID;
         }
@@ -58,7 +65,6 @@ namespace Bank
             }
 
         }
-
         public void DeleteCertainAccount()
         {
             int deleteAccount = 0;
@@ -69,12 +75,16 @@ namespace Bank
 
         }
 
-
         public void CheckAccounts()
         {
             foreach (var item in listOfBankAccounts)
-                Console.WriteLine("Account ID: " + item.ID + " / owner name: " + item.ownerName + " / account number: " + item.accountNumber + " / account ballance:" + item.accountBallance);
+                Console.WriteLine("Account ID: " + item.ID + " / owner name: " + item.ownerName + " / account ballance:" + item.accountBallance);
             Console.ReadKey();
+        }
+
+        public void AccountDeposit()
+        {
+
         }
     }
 }
