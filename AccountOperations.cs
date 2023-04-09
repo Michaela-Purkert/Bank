@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CheckInput;
+using ConsoleTools;
 
 namespace Bank
 {
@@ -33,6 +34,41 @@ namespace Bank
             Console.ReadKey();
             return accountID;
         }
+
+        private void DeleteAccount(int idAccount)
+        {
+            bool checkID = false;
+            foreach (var item in listOfBankAccounts)
+            {
+                if (item.ID == idAccount)
+                {
+                    listOfBankAccounts.Remove(item);
+                    checkID = true;
+                    Console.WriteLine("Account with ID {0} has been removed", idAccount);
+                    Console.ReadKey();
+                    break;
+
+                }
+            }
+
+            if (checkID == false)
+            {
+                Console.WriteLine("You must choose an existing account number");
+                Console.ReadKey();
+            }
+
+        }
+
+        public void DeleteCertainAccount()
+        {
+            int deleteAccount = 0;
+            Console.WriteLine("Choose the ID of the account you want to delete:");
+            deleteAccount = Check.PositiveIntCheck();
+
+            DeleteAccount(deleteAccount);
+
+        }
+
 
         public void CheckAccounts()
         {

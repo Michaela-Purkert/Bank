@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleMenu-simple" Version="2.6.0" />
+    <PackageReference Include="Sharprompt" Version="2.4.5" />
   </ItemGroup>
 
   <ItemGroup>
