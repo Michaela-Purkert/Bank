@@ -11,4 +11,8 @@
     <PackageReference Include="ConsoleMenu-simple" Version="2.6.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckInput\CheckInput.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,6 +1,8 @@
-﻿using ConsoleTools;
+﻿using Bank;
+using ConsoleTools;
 using System.Threading.Channels;
 
+AccountOperations accountOperations = new AccountOperations();
 void Action1()
 {
     Console.WriteLine("Action 1");
@@ -19,8 +21,10 @@ void Action3()
     Console.ReadKey();
 }
 
+
+
 var subMenu = new ConsoleMenu(args, level: 1)
-        .Add("Sub_One", () => Action1())
+        .Add("Sub_three", () => Action1())
         .Add("Sub_Two", () => Action2())
         .Add("Sub_Three", () => Action3())
         .Add("Sub_Close", ConsoleMenu.Close)
@@ -34,8 +38,8 @@ var subMenu = new ConsoleMenu(args, level: 1)
         });
 
 var menu = new ConsoleMenu(args, level: 0)
-  .Add("One", () => Action1())
-  .Add("Two", () => Action2())
+  .Add("Create a new account", () => accountOperations.CreateNewAccount())
+  .Add("Check accounts", () => accountOperations.CheckAccounts())
   .Add("Three", () => Action3())
   .Add("Sub", subMenu.Show)
   //.Add("Change me", (thisMenu) => thisMenu.CurrentItem.Name = "I am changed!")

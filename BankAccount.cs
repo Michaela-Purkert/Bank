@@ -8,15 +8,17 @@ namespace Bank
 {
     internal class BankAccount
     {
-        private uint accountNumber;
-        private string ownerName;
-        private int accountBalance;
+        public int ID;
+        public int accountNumber;
+        public string ownerName;
+        public int accountBallance;
 
-        public BankAccount(uint accountNumber, string ownerName, int accountBalance)
+        public BankAccount(int ID, int accountNumber, string ownerName, int accountBallance)
         {
+            this.ID = ID;
             this.accountNumber = accountNumber;
             this.ownerName = ownerName;
-            this.accountBalance = accountBalance;
+            this.accountBallance = accountBallance;
         }
 
     }
